@@ -72,24 +72,30 @@ export default function App() {
   return (
     <div className="flex flex-col h-dvh bg-coffee-50">
       <div className="flex justify-between items-center p-3 border-b border-coffee-200 bg-white gap-3">
-        {role === 'customer' && customerView === 'home' && (
+        {role === 'customer' ? (
+          customerView === 'home' ? (
+            <button onClick={() => setCustomerView('history')} className="text-sm font-medium text-coffee-700 hover:text-coffee-900">
+              История
+            </button>
+          ) : (
+            <button onClick={() => setCustomerView('home')} className="text-sm font-medium text-coffee-700 hover:text-coffee-900">
+              Назад
+            </button>
+          )
+        ) : role === 'admin' && adminView === 'home' ? (
           <button
-            onClick={() => setCustomerView('history')}
+            onClick={() => setAdminView('operators')}
             className="text-sm font-medium text-coffee-700 hover:text-coffee-900"
           >
-            История
+            Операторы
           </button>
-        )}
-        {role === 'customer' && customerView === 'history' && (
-          <button
-            onClick={() => setCustomerView('home')}
-            className="text-sm font-medium text-coffee-700 hover:text-coffee-900"
-          >
-            Назад
-          </button>
+        ) : (
+          <div></div>
         )}
 
-        {role === 'customer' && <div className="text-sm font-medium text-coffee-800">{name}</div>}
+        {role === 'customer' && (
+          <div className="text-sm font-medium text-coffee-800">{name}</div>
+        )}
 
         <button
           onClick={handleLogout}
