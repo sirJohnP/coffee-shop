@@ -28,7 +28,7 @@ export default function CustomerHome({ token, userId }) {
 
         const drinksWithFullUrl = drinksRes.data.map(drink => ({
           ...drink,
-          imageUrl: `${API_BASE}${drink.imageUrl}`
+          imageUrl: drink.imageUrl
         }));
 
         setBalance(balanceRes.data.balance);
