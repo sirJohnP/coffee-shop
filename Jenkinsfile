@@ -38,12 +38,8 @@ pipeline {
 
         stage('Run API Tests (Postman)') {
             steps {
-                sh 'npm install -g newman'
-                sh '''
-                    newman run postman/coffee-shop-tests.postman_collection.json \
-                      --global-var "base_url=http://localhost:8081" \
-                      --reporters cli
-                '''
+                sh 'npm ci'
+                sh 'npx newman run postman/coffee-shop.postman_collection.json'
             }
         }
 
