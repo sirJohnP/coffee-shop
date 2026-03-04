@@ -1,6 +1,7 @@
 package com.coffee.loyalty.controller;
 
 import com.coffee.loyalty.dto.CreateOperatorRequest;
+import com.coffee.loyalty.dto.DeleteUserRequest;
 import com.coffee.loyalty.entity.Operator;
 import com.coffee.loyalty.repository.OperatorRepository;
 import com.coffee.loyalty.repository.TransactionRepository;
@@ -54,5 +55,13 @@ public class AdminController {
         "totalAwarded", totalAwarded,
         "totalRedeemed", totalRedeemed
     );
+  }
+
+  @PostMapping("/delete/user")
+  public String resetSeason(@RequestBody DeleteUserRequest request) {
+    if (userRepository.deleteUser(request.getPhoneNumber()) == 0) {
+      throw new RuntimeException("User not found");
+    }
+    return "Season reseted";
   }
 }
