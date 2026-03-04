@@ -36,7 +36,6 @@ pipeline {
             }
         }
 
-
         stage('Run API Tests (Postman)') {
             steps {
                 sh 'npm ci'
