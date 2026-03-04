@@ -38,7 +38,7 @@ export default function AdminHome({ token }) {
     <div className="flex-1 p-4 max-w-md mx-auto">
       <h2 className="text-xl font-bold text-coffee-800 mb-6 text-center">Админка</h2>
 
-      <div className="grid grid-cols-1 gap-5 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-xl p-5 border border-coffee-100 shadow-sm text-center">
           <div className="text-sm text-coffee-600">Всего пользователей</div>
           <div className="text-2xl font-bold text-coffee-800 mt-2">{stats.totalUsers}</div>
