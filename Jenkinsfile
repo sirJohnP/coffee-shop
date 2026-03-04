@@ -25,6 +25,34 @@ pipeline {
             }
         }
 
+        stage('Start test Environment') {
+            steps {
+                script {                    
+                    sh '''
+                        docker compose -f docker-compose.test.yml down || true
+                        docker compose -f docker-compose.test.yml up -d
+                    '''
+                }
+            }
+        }
+
+        stage('Run API Tests (Postman)') {
+            steps {
+                sh 'npm install -g newman'
+                sh '''
+                    newman run postman/coffee-shop-tests.postman_collection.json \
+                      --global-var "base_url=http://localhost:8081" \
+                      --reporters cli
+                '''
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                sh 'docker compose -f docker-compose.test.yml down -v'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 sh 'docker compose down'
@@ -40,5 +68,11 @@ pipeline {
         failure {
             echo 'Deploy failed'
         }
+        
+        always {
+            archiveArtifacts artifacts: 'target/surefire-reports/**', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'test-results.json', allowEmptyArchive: true
+        }
+    
     }
 }
