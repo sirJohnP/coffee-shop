@@ -39,7 +39,7 @@ pipeline {
         stage('Run API Tests (Postman)') {
             steps {
                 sh 'npm ci'
-                sh 'npx newman run postman/coffee-shop-tests.postman_collection.json'
+                sh 'npx newman run postman/coffee-shop-tests.postman_collection.json --global-var "base_url=http://localhost:8081"'
             }
         }
 
