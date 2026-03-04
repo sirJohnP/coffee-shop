@@ -36,22 +36,6 @@ pipeline {
             }
         }
 
-        stage('Wait for Backend') {
-            steps {
-                sh '''
-                    echo "Waiting for backend to accept requests..."
-                    for i in {1..30}; do
-                        if curl -s -o /dev/null -w "%{http_code}" http://localhost:8084/api/auth/login | grep -q "405"; then
-                            echo "Backend is ready!"
-                            exit 0
-                        fi
-                        sleep 2
-                    done
-                    echo "Backend did not start in time!" >&2
-                    exit 1
-                '''
-            }
-        }
 
         stage('Run API Tests (Postman)') {
             steps {
