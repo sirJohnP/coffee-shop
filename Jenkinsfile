@@ -31,6 +31,7 @@ pipeline {
                     sh '''
                         docker compose -f docker-compose.test.yml down -v || true
                         docker compose -f docker-compose.test.yml up -d --build
+                        sleep 60
                     '''
                 }
             }
