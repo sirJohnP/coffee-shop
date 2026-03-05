@@ -61,19 +61,17 @@ export default function OperatorHome({ token }) {
             type="number"
             value={sum}
             onChange={(e) => setSum(e.target.value)}
-            placeholder="150"
             className="w-full px-3 py-2 border border-coffee-200 rounded-lg focus:ring-1 focus:ring-coffee-500"
             disabled={loading}
           />
         </div>
 
         <div>
-          <label className="block text-sm text-coffee-700 mb-1">Логин клиента</label>
+          <label className="block text-sm text-coffee-700 mb-1">Номер телефона</label>
           <input
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}
-            placeholder="ivan123"
             className="w-full px-3 py-2 border border-coffee-200 rounded-lg focus:ring-1 focus:ring-coffee-500"
             disabled={loading}
           />

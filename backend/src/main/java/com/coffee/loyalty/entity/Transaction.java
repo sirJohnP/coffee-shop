@@ -18,5 +18,4 @@ public class Transaction {
   private LocalDateTime timestamp = LocalDateTime.now();
   private String type;
   private Integer amount;
-  private String description;
 }

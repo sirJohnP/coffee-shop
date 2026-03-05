@@ -73,7 +73,6 @@ export default function CustomerHome({ token, userId }) {
       <div className="text-center mb-6">
         <h2 className="text-base text-coffee-600">Ваш баланс за этот сезон</h2>
         <p className="text-3xl font-bold text-coffee-800 mt-1">{balance} ₽</p>
-        <p className="text-xs text-coffee-500 mt-1">1 балл = 1 ₽</p>
       </div>
 
       <div className="mb-6">

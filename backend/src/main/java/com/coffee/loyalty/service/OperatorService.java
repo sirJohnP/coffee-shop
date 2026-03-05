@@ -33,8 +33,7 @@ public class OperatorService {
         user.getId(),
         LocalDateTime.now(),
         "AWARD",
-        amount,
-        "Начисление бонусов"
+        amount
     ));
   }
 
@@ -57,8 +56,7 @@ public class OperatorService {
         user.getId(),
         LocalDateTime.now(),
         "REDEEM",
-        amount,
-        "Списание бонусов"
+        amount
     ));
   }
 }
